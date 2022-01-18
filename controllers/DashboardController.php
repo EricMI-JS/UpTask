@@ -10,11 +10,17 @@ class DashboardController
     public static function index(Router $router)
     {
         session_start();
-
         isAuth();
 
+        $id = $_SESSION['id'];
+
+        $proyectos = Proyecto::belongsTo('propietarioId', $id);
+
+        debuguear($proyectos);
+
         $router->render('dashboard/index', [
-            'titulo' => 'Proyectos'
+            'titulo' => 'Proyectos',
+            'proyectos' => $proyectos
         ]);
     }
 
