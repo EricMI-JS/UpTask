@@ -16,8 +16,6 @@ class DashboardController
 
         $proyectos = Proyecto::belongsTo('propietarioId', $id);
 
-        debuguear($proyectos);
-
         $router->render('dashboard/index', [
             'titulo' => 'Proyectos',
             'proyectos' => $proyectos
