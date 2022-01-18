@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Proyecto;
 use MVC\Router;
 
 class DashboardController
@@ -24,6 +25,28 @@ class DashboardController
         isAuth();
 
         $alertas = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $proyecto = new Proyecto($_POST);
+
+            // Validación
+            $alertas = $proyecto->validarProyecto();
+
+            if (empty($alertas)) {
+                // Generar una URL única
+                $hash = md5(uniqid());
+                $proyecto->url = $hash;
+
+                // Almacenar el creador del proyecto
+                $proyecto->propietarioId = $_SESSION['id'];
+
+                // Guardar el proyecto
+                $proyecto->guardar();
+
+                //Redireccionar
+                header('Location: /proyecto?id=' . $proyecto->url);
+            }
+        }
 
         $router->render('dashboard/crear-proyecto', [
             'alertas' => $alertas,
