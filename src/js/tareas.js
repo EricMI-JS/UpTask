@@ -22,7 +22,7 @@
         setTimeout(() => {
             const formulario = document.querySelector('.formulario');
             formulario.classList.add('animar');
-        }, 2000);
+        }, 0);
         document.querySelector('body').appendChild(modal);
     }
 })();
