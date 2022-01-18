@@ -16,7 +16,7 @@
                 <input type="password" id="password" placeholder="Tu password" name="password">
             </div>
 
-            <input type="submit" class="boton" value="Crear Cuenta">
+            <input type="submit" class="boton" value="Iniciar Sesión">
         </form>
 
         <div class="acciones">

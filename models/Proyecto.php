@@ -20,7 +20,7 @@ class Proyecto extends ActiveRecord
     public function validarProyecto()
     {
         if (!$this->proyecto) {
-            self::$alertas['error'][] = 'El nombre del proyecto es obligatorio';
+            self::$alertas['error'][] = 'El Nombre del proyecto es obligatorio';
         }
         return self::$alertas;
     }
