@@ -34,7 +34,18 @@
                     modal.remove();
                 }, 500);
             }
+            if (e.target.classList.contains('submit-nueva-tarea')) {
+                submitFormularioNuevaTarea();
+            }
         })
         document.querySelector('body').appendChild(modal);
+
+        function submitFormularioNuevaTarea() {
+            const tarea = document.querySelector('#tarea').value.trim();
+
+            if (tarea === '') {
+                return;
+            }
+        }
     }
 })();
