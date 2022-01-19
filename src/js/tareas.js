@@ -38,14 +38,41 @@
                 submitFormularioNuevaTarea();
             }
         })
-        document.querySelector('body').appendChild(modal);
+        document.querySelector('.dashboard').appendChild(modal);
+    }
 
-        function submitFormularioNuevaTarea() {
-            const tarea = document.querySelector('#tarea').value.trim();
+    function submitFormularioNuevaTarea() {
+        const tarea = document.querySelector('#tarea').value.trim();
 
-            if (tarea === '') {
-                return;
-            }
+        if (tarea === '') {
+            // Mostrar alerta error
+            mostrarAlerta('El nombre de la tarea es obligatorio', 'error', document.querySelector('.formulario legend'));
         }
+        agregarTarea(tarea);
+    }
+
+    // Muestra una alerta
+    function mostrarAlerta(mensaje, tipo, referencia) {
+        // Previene la creación de múltiples alertas
+        const alertaPrevia = document.querySelector('.alerta');
+        if (alertaPrevia) {
+            alertaPrevia.remove();
+        }
+
+        const alerta = document.createElement('DIV');
+        alerta.classList.add('alerta', tipo);
+        alerta.textContent = mensaje;
+
+        // Inserta alerta antes del legend
+        referencia.parentElement.insertBefore(alerta, referencia.nextElementSibling);
+
+        setTimeout(() => {
+            alerta.remove();
+        }, 3000);
+    }
+
+    // Consultar servidor para agregar unan ueva tarea al proyecto
+    function agregarTarea(tarea) {
+
     }
 })();
