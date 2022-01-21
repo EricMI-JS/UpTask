@@ -69,6 +69,8 @@
 
             const listadoTareas = document.querySelector('#listado-tareas');
             listadoTareas.appendChild(contenedorTarea);
+
+            console.log(listadoTareas);
         })
     }
 
