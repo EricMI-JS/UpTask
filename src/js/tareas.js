@@ -22,7 +22,42 @@
     }
 
     function mostrarTareas(tareas) {
-        console.log(tareas);
+        if (tareas.length === 0) {
+            const contenedorTareas = document.querySelector('#listado-tareas');
+
+            const textoNoTareas = document.createElement('LI');
+            textoNoTareas.textContent = 'No hay tareas';
+            textoNoTareas.classList.add('no-tareas');
+
+            contenedorTareas.appendChild(textoNoTareas);
+            return;
+        }
+
+        const estados = {
+            0: 'Pendiente',
+            1: 'Completa'
+        }
+
+        tareas.forEach(tarea => {
+            const contenedorTarea = document.createElement('LI');
+            contenedorTarea.dataset.tareaId = tarea.id;
+            contenedorTarea.classList.add('tarea');
+
+            const nombreTarea = document.createElement('P');
+            nombreTarea.textContent = tarea.nombre;
+
+            const opcionesDiv = document.createElement('DIV');
+            opcionesDiv.classList.add('opciones');
+
+            // Botones
+            const btnEstadoTarea = document.createElement('BUTTON');
+            btnEstadoTarea.classList.add('estado-tarea');
+            btnEstadoTarea.classList.add(`${estados[tarea.estado].toLowerCase()}`);
+            btnEstadoTarea.textContent = estados[tarea.estado];
+            btnEstadoTarea.dataset.estadoTarea = tarea.estado;
+
+            console.log(btnEstadoTarea);
+        })
     }
 
 
