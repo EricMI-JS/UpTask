@@ -7,7 +7,7 @@
 
     <div id="filtros" class="filtros">
         <div class="filtros-inputs">
-            <h2>Filtros:</h2>
+            <h2>Filtros: </h2>
             <div class="campo">
                 <label for="todas">Todas</label>
                 <input type="radio" id="todas" name="filtro" value="" checked />
