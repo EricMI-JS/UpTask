@@ -57,6 +57,9 @@
             btnEstadoTarea.classList.add(`${estados[tarea.estado].toLowerCase()}`);
             btnEstadoTarea.textContent = estados[tarea.estado];
             btnEstadoTarea.dataset.estadoTarea = tarea.estado;
+            btnEstadoTarea.ondblclick = function () {
+                cambiarEstadoTarea({ ...tarea });
+            }
 
             const btnEliminarTarea = document.createElement('BUTTON');
             btnEliminarTarea.classList.add('eliminar-tarea');
@@ -183,6 +186,16 @@
         } catch (error) {
             console.log(error);
         }
+    }
+
+    function cambiarEstadoTarea(tarea) {
+        const nuevoEstado = tarea.estado === '1' ? '0' : '1';
+        tarea.estado = nuevoEstado;
+        actualizarTarea(tarea);
+    }
+
+    function actualizarTarea(tarea) {
+        console.log(tarea);
     }
 
     function obtenerProyecto() {
