@@ -50,7 +50,7 @@
             const nombreTarea = document.createElement('P');
             nombreTarea.textContent = tarea.nombre;
             nombreTarea.ondblclick = function () {
-                mostrarFormulario(editar = true, tarea);
+                mostrarFormulario(editar = true, { ...tarea });
             }
 
             const opcionesDiv = document.createElement('DIV');
@@ -127,20 +127,24 @@
                 }, 500);
             }
             if (e.target.classList.contains('submit-nueva-tarea')) {
-                submitFormularioNuevaTarea();
+                const nombreTarea = document.querySelector('#tarea').value.trim();
+
+                if (nombreTarea === '') {
+                    // Mostrar alerta error
+                    mostrarAlerta('El nombre de la tarea es obligatorio', 'error', document.querySelector('.formulario legend'));
+                    return;
+                }
+
+                if (editar) {
+                    tarea.nombre = nombreTarea;
+                    actualizarTarea(tarea);
+                } else {
+                    agregarTarea(nombreTarea);
+                }
+
             }
         })
         document.querySelector('.dashboard').appendChild(modal);
-    }
-
-    function submitFormularioNuevaTarea() {
-        const tarea = document.querySelector('#tarea').value.trim();
-
-        if (tarea === '') {
-            // Mostrar alerta error
-            mostrarAlerta('El nombre de la tarea es obligatorio', 'error', document.querySelector('.formulario legend'));
-        }
-        agregarTarea(tarea);
     }
 
     // Muestra una alerta
