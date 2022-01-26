@@ -5,7 +5,7 @@
 
     <a href="/perfil" class="enlace">Volver al Perfil</a>
 
-    <form method="POST" class="formulario" action="/perfil">
+    <form method="POST" class="formulario" action="/cambiar-password">
         <div class="campo">
             <label for="nombre">Password Actual</label>
             <input type="password" name="password_actual" placeholder="Tu Password Actual">
