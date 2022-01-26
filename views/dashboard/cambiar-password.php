@@ -11,7 +11,7 @@
             <input type="password" name="password_actual" placeholder="Tu Password Actual">
         </div>
         <div class="campo">
-            <label for="email">Email</label>
+            <label for="email">Password Nuevo</label>
             <input type="password" name="password_nuevo" placeholder="Tu Nuevo Password">
         </div>
 
